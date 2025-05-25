@@ -1,0 +1,51 @@
+[project]
+name = "heat-pump-exploration"
+version = "0.1.0"
+description = "A test project for exploring our tech stack"
+requires-python = ">=3.10"
+dependencies = [
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.3",
+    "notebook>=7.4.2",
+    "pandas>=2.2.3",
+    "scipy>=1.15.3",
+]
+
+[tool.setuptools]
+packages = ["heat_pump_exploration"]
+
+[tool.uv]
+package = true
+
+[dependency-groups]
+dev = [
+    "jupytext>=1.17.1",
+ "pre-commit>=4.2.0",
+ "ruff>=0.11.10",
+]
+
+[project.scripts]
+inspect = "heat_pump_exploration.analysis.inspect_data:main"
+plot = "heat_pump_exploration.analysis.scatter_plot:main"
+
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    "ANN", # flake8-annotations: Type annotations
+    "D",   # pydocstyle: Docstring conventions
+    "E",   # pycodestyle: Errors (default)
+    "F",   # pyflakes: Linter
+    "I",   # isort: Import order
+    "N",   # pep8-naming: Naming conventions
+    "W",   # pycodestyle: Warnings (default)
+]
+ignore = [
+    "D100", # Warns about missing module-level docstrings
+    "D104", # Warns about missing docstring in public package
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
