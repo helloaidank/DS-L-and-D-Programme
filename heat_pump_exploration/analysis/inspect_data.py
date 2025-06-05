@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pandas as pd
 from scipy import stats
 
@@ -5,7 +7,9 @@ from scipy import stats
 def main() -> None:
     """Print some summary statistics about the dataframe."""
     print("Hello!")
-    df = pd.read_csv("data/heat_pump_suitability.csv")
+    project_root = Path(__file__).resolve().parents[2]
+    data_path = project_root / "data" / "heat_pump_suitability.csv"
+    df = pd.read_csv(data_path)
     print(df.head())
 
     # Calculate basic statistics on numeric columns using scipy
